@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -8,18 +9,28 @@ function App() {
     const user = { name, email };
     console.log(user);
 
-    fetch('http://localhost:5000/users', {
-      method: 'POST',
+    fetch("http://localhost:5000/users", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
-    .then(res=>res.json())
-    .then(data=> console.log(data))
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+    event.target.reset();
   };
   return (
     <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
+        </ul>
+      </nav>
       <h1>Simple Crud</h1>
       <form onSubmit={handleAddUser}>
         <input type="text" name="name" id="" />
